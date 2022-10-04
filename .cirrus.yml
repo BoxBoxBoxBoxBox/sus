@@ -1,6 +1,7 @@
 env:
   RCLONECONFIG_DRIVE: "ENCRYPTED[dbf856904fada47937d1b5e67771e82c2f2e9018e9030fd1efac4b21aa8d35092b17a4f2e432a8510221df6ce331fefc]"
   TG_TOKEN: "ENCRYPTED[0406fa1a7fbb48cc1fb5ebb641d615229154dc490d3abeed7d5c0d01aee7cf18915ea50c93ef56646828fb0dbeed605c]"
+  TOKEN: "ENCRYPTED[b1fe031c6ef8511c4bdee7c1db151cf505d056d90d7fbdb2ab3c8268c44598be0bd3ef8042de9dfd4d39458c8a1c03ac]"
   TG_CHAT_ID: "ENCRYPTED[18740f4a7c44af1a9d0a1f12557967744780ff70d8a296a2e4a378ec29b8615787515a5f55bd19f79f7d271dd33c3d87]"
   WORKDIR: "/tmp"
   EMAIL: "ENCRYPTED[963206c5a812b099c0832f6d64721545893d82ea7626b0332037d5a36dd8590bf1e1fc6a46c7e2317b34d70770fee590]"
@@ -14,16 +15,22 @@ task:
     cpu: 8
     memory: 32G
 
-  Load-Ccache_background_script:
+  Load-Cc_background_script:
      - ./script/load_ccache.sh
 
-  Sync-rom_script:
+  Sync_script:
      - ./script/sync.sh
      
-  Build-rom_script:
+  uplood_script:
+     - ./script/uplood.sh
+     
+  Yapi_script:
      - ./script/building.sh
      
-  Ccache-info_script:
+  retry_script:
+     - ./script/retry.sh
+     
+  Cc-info_script:
      - set -e
      - export CCACHE_DIR=$WORKDIR/ccache
      - ccache -s
