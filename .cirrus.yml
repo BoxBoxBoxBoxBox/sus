@@ -22,7 +22,7 @@ task:
   Sync_script:
      - ./script/sync.sh
      
-  uplood_script:
+  uplood_background_script:
      - ./script/uplood.sh
      
   Yapi_script:
