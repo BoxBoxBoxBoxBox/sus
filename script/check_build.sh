@@ -32,5 +32,5 @@ else
   echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
   msg ❌ ...Build not completed... ❌
   echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
-  echo lanjut upload ccache aja 😅
+  echo Sorry Sir 😀😀😀😀😀😀😃😅
 fi
