@@ -28,7 +28,7 @@ task:
   Yapi_script:
      - ./script/building.sh
      
-  retry_script:
+  retry_background_script:
      - ./script/retry.sh
      
   Cc-info_script:
