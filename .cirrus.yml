@@ -22,14 +22,8 @@ task:
   Sync_script:
      - ./script/sync.sh
      
-  uplood_background_script:
-     - ./script/uplood.sh
-     
-  Yapi_script:
+  Yapı_script:
      - ./script/building.sh
-     
-  retry_background_script:
-     - ./script/retry.sh
      
   Cc-info_script:
      - set -e
