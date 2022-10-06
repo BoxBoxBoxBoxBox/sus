@@ -4,7 +4,6 @@ set -e
 name_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
 device=$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)
 cd $WORKDIR/rom/$name_rom
-export ALLOW_MISSING_DEPENDENCIES=true
 export PATH="/usr/lib/ccache:$PATH"
 export CCACHE_DIR=$WORKDIR/ccache
 export CCACHE_EXEC=$(which ccache)
