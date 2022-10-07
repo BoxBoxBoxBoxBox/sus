@@ -8,6 +8,17 @@ name_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
 device=$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)
 a=$(grep 'FAILED:' $WORKDIR/rom/$name_rom/build.log -m1 || true)
 b=$(grep '#### build completed successfully' $WORKDIR/rom/$name_rom/build.log -m1 || true)
+compile_plox
+if [ ! -e out/target/product/*/*2022*.zip ]; then # to bypass OOM
+sed -i 's/-j$(nproc --all)/-j7/' /tmp/ci/build.sh
+. $CIRRUS_WORKING_DIR/script/check_build.sh # run again to update values before starting compilation
+compile_plox # simply re-run the build with less threads
+fi
+if [ ! -e out/target/product/*/*2022*.zip ]; then
+sed -i 's/-j7/-j6/' /tmp/ci/build.sh
+. $CIRRUS_WORKING_DIR/script/check_build.sh
+compile_plox # just incase if -1 thread didnt help
+fi
 if [[ $a == *'FAILED:'* ]]
 then
 cd $WORKDIR/rom/$name_rom
@@ -32,5 +43,5 @@ else
   echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
   msg ❌ ...Build not completed... ❌
   echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
-  echo Sorry Sir 😀😀😀😀😀😀😃😅
+  echo Sed
 fi
