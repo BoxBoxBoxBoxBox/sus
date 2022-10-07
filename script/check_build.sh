@@ -45,3 +45,14 @@ else
   echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
   echo Sed
 fi
+compile_plox
+if [ ! -e out/target/product/*/*2022*.zip ]; then # to bypass OOM
+sed -i 's/-j$(nproc --all)/-j7/' /tmp/ci/build.sh
+. $CIRRUS_WORKING_DIR/script/check_build.sh # run again to update values before starting compilation
+compile_plox # simply re-run the build with less threads
+fi
+if [ ! -e out/target/product/*/*2022*.zip ]; then
+sed -i 's/-j7/-j6/' /tmp/ci/build.sh
+. $CIRRUS_WORKING_DIR/script/check_build.sh
+compile_plox # just incase if -1 thread didnt help
+fi
