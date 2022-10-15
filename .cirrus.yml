@@ -2,6 +2,7 @@ env:
   RCLONECONFIG_DRIVE: "ENCRYPTED[c382ff72847c41ab664b4156580542ddd80b9cba4fdafe983eb7606a62d8ddd0265f0039928c28c61f1ff2d054a07250]"
   TG_TOKEN: "ENCRYPTED[0406fa1a7fbb48cc1fb5ebb641d615229154dc490d3abeed7d5c0d01aee7cf18915ea50c93ef56646828fb0dbeed605c]"
   TOKEN: "ENCRYPTED[b1fe031c6ef8511c4bdee7c1db151cf505d056d90d7fbdb2ab3c8268c44598be0bd3ef8042de9dfd4d39458c8a1c03ac]"
+  GIT_COOKIES: "ENCRYPTED[ab6dc194afcf612ae040e356c396527274d725e33073a68e49e0c744346a04cf5b6937c4f6a03a971890be51eca710cc]"
   TG_CHAT_ID: "ENCRYPTED[18740f4a7c44af1a9d0a1f12557967744780ff70d8a296a2e4a378ec29b8615787515a5f55bd19f79f7d271dd33c3d87]"
   only_if: $CIRRUS_REPO_OWNER == 'BoxBoxBoxBoxBox'
   WORKDIR: "/tmp"
@@ -9,10 +10,10 @@ env:
   CIRRUS_CLONE_DEPTH: "1"
 
 task:
-  name: "Eh"
+  name: "Sussy"
   timeout_in: 120m
   container:
-    image: anggit86/ubuntu:22.04
+    dockerfile: Dockerfile
     cpu: 8
     memory: 32G
 
@@ -22,7 +23,7 @@ task:
   Sync_script:
      - ./script/sync.sh
      
-  Yapı_script:
+  Build_script:
      - ./script/building.sh
      
   Cc-info_script:

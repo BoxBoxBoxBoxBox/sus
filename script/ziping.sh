@@ -81,7 +81,7 @@ time com ccache 1
 rclone copy --drive-chunk-size 256M --stats 1s ccache.tar.gz NFS:ccache/$name_rom -P
 rm -rf ccache.tar.gz
 echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
-msg Upload ccache succes..
+msg Upload ccache success..
 echo ━━━━━━━━━ஜ۩۞۩ஜ━━━━━━━━
 }
 
@@ -110,3 +110,8 @@ fi
 }
 
 upload
+
+tg "$rom_name ccache was uploaded successfully!
+Total Size: $(ls -sh ${PWD}/ccache.tar.gz | cut -d - -f 1 | cut -d / -f 1)
+Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
+Status: $progress"

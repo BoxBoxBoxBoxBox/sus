@@ -7,10 +7,11 @@ cd $WORKDIR/rom/$name_rom
 export PATH="/usr/lib/ccache:$PATH"
 export CCACHE_DIR=$WORKDIR/ccache
 export CCACHE_EXEC=$(which ccache)
+export _JAVA_OPTIONS="-Xmx10g"
 export USE_CCACHE=1
-export CCACHE_COMPRESS=true
+ccache -o compression=true
 which ccache
-ccache -M 10
+ccache -M 15
 ccache -z
 command=$(tail $CIRRUS_WORKING_DIR/build.sh -n +$(expr $(grep '# build rom' $CIRRUS_WORKING_DIR/build.sh -n | cut -f1 -d:) - 1)| head -n -1 | grep -v '# end')
 bash -c "$command" |& tee -a $WORKDIR/rom/$name_rom/build.log || true & sleep 95m
