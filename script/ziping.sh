@@ -109,8 +109,4 @@ else
 fi
 }
 
-tg "$name_rom ccache was uploaded successfully!
-Total Size: $(ls -sh ${PWD}/ccache.tar.gz | cut -d - -f 1 | cut -d / -f 1)
-Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
-
 upload
