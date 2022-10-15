@@ -11,16 +11,8 @@ lunch cherish_lava-userdebug
 export CHERISH_VANILLA=true
 export SELINUX_IGNORE_NEVERALLOWS=true
 export TZ=Asia/Dhaka #put before last build command
-compile_plox () {
 make bacon -j$(nproc --all)
-}
-if [ ! -e out/target/product/*/*2022*.zip ]; then # to bypass OOM kill
-sed -i 's/-j$(nproc --all)/-j7/' /tmp/script/building.sh
-. /tmp/script/building.sh # run again to update values before starting compilation
-compile_plox # simply re-run the build with less threads
+if [ ! -e out/target/product/*/*2022*.zip ]; then # you don't have to run this you're not facing oom kill issue while build is about 98-98%
+make bacon -j$(nproc --all) # re-run the build cuz there's still time left considering only few targets left
 fi
-if [ ! -e out/target/product/*/*2022*.zip ]; then
-sed -i 's/-j7/-j6/' /tmp/script/building.sh
-. /tmp/script/building.sh
-compile_plox # just incase if -1 thread didnt help
 #end
