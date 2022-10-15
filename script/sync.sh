@@ -22,7 +22,7 @@ tg () {
 curl -s "https://api.telegram.org/bot${TG_TOKEN}/sendmessage" --data "text=$1&chat_id=${TG_CHAT_ID}"
 }
 
-tg "$rom_name source sync completed!
+tg "$name_rom source sync completed!
 Total Size: $(du -sh /tmp/rom | cut -d - -f 1 | cut -d / -f 1)
 Time Took: $(($SECONDS / 60)) minute(s) and $(($SECONDS % 60)) second(s).
 Status: $progress"
