@@ -4,10 +4,6 @@
 echo "${GIT_COOKIES}" > ~/git_cookies.sh
 bash ~/git_cookies.sh
 
-# Fixes
-sudo touch /etc/mtab
-sudo chmod 777 /etc/mtab
-
 set -exv
 name_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
 progress=https://cirrus-ci.com/build/$CIRRUS_BUILD_ID
@@ -17,6 +13,7 @@ command=$(head $CIRRUS_WORKING_DIR/build.sh -n $(expr $(grep '# build rom' $CIRR
 only_sync=$(grep 'repo sync' $CIRRUS_WORKING_DIR/build.sh)
 bash -c "$command" || true
 rm -rf Sync-rom.log
+bash $CIRRUS_WORKING_DIR/script/clone.sh
 
 # push to telegram
 tg () {
