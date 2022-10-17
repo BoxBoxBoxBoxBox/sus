@@ -8,8 +8,8 @@ source build/envsetup.sh
 lunch aosp_lava-userdebug
 export SELINUX_IGNORE_NEVERALLOWS=true
 export TZ=Asia/Dhaka
-make bacon -j$(nproc --all)
+m otapackage
 if [ ! -e out/target/product/*/*2022*.zip ]; then # you don't have to run this you're not facing oom kill issue while build is about 98-98%
-make bacon -j$(nproc --all) # re-run the build cuz there's still time left considering only few targets left
+m otapackage # re-run the build cuz there's still time left considering only few targets left
 fi
 #end
