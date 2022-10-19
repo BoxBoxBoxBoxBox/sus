@@ -12,4 +12,5 @@ make GameSpace
 if [ ! -e out/target/product//*2022.zip ]; then # you don't have to run this you're not facing oom kill issue while build is about 98-98%
 make GameSpace # re-run the build cuz there's still time left considering only few targets left
 fi
+make Dialer
 #end
