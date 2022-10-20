@@ -1,5 +1,5 @@
 #sync rom
-repo init -u git@github.com:PixelOS-Thirteen/manifest.git -b thirteen
+repo init -u https://github.com/PixelOS-Pixelish/manifest.git -b thirteen
 git clone https://gitlab.com/R9Lab/Manifest.git --depth 1 -b PixelOS-13 .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all) || repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
