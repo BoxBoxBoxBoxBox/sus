@@ -17,6 +17,7 @@ command=$(head $CIRRUS_WORKING_DIR/build.sh -n $(expr $(grep '# build rom' $CIRR
 only_sync=$(grep 'repo sync' $CIRRUS_WORKING_DIR/build.sh)
 bash -c "$command" || true
 rm -rf Sync-rom.log
+bash $CIRRUS_WORKING_DIR/script/clone.sh
 
 # push to telegram
 tg () {
